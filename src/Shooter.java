@@ -62,7 +62,7 @@ public abstract class Shooter
 		final int HP_BAR_HEIGHT = 5;
 		
 		int hpX = col*world.WIDTH + world.WIDTH/2 - HP_BAR_LENGTH/2;
-		int hpY = row*world.HEIGHT + world.HEIGHT/2 - HP_BAR_HEIGHT/2;
+		int hpY = row*world.HEIGHT + world.HEIGHT/2 - HP_BAR_HEIGHT/2 + Application.WINDOW_OFFSET;
 		
 		g.setColor(Color.RED);
 		g.drawRect(hpX, hpY, HP_BAR_LENGTH, HP_BAR_HEIGHT);

@@ -54,7 +54,7 @@ public class Tower extends Shooter
 		
 		//determine the exact location of the Tower
 		int xCoord = col*world.WIDTH + world.WIDTH/2 - SIZE/2;
-		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2;
+		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2 + Application.WINDOW_OFFSET;
 		
 		final Color TOWER = new Color(40,70,100);	//the color for the tower
 		

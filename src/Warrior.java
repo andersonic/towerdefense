@@ -51,7 +51,7 @@ public class Warrior extends Defender
 		//determine the exact location based on coordinates and dimensions of
 		//the world
 		int xCoord = col*world.WIDTH + world.WIDTH/2 - SIZE/2;
-		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2;
+		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2 + Application.WINDOW_OFFSET;
 		
 		//set the color
 		final Color WARRIOR = new Color(135, 0, 183);

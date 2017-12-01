@@ -47,7 +47,7 @@ public class Destroyer extends Attacker
 		//determine the exact location based on coordinates and dimensions of
 		//the world
 		int xCoord = col*world.WIDTH + world.WIDTH/2 - SIZE/2;
-		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2;
+		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2 + Application.WINDOW_OFFSET;
 		
 		//set the color
 		final Color DESTROYER = new Color(84,55,8);

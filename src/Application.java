@@ -27,6 +27,7 @@ public class Application extends JFrame implements MouseListener
 	private static World myWorld = new World();
 	
 	//Setting the window screen 
+	public static final int WINDOW_OFFSET = 20;
 	public static final int WINDOW_WIDTH = 800;
 	public static final int WINDOW_HEIGHT = 400;
 	private static ArrayList<Shooter> attackers = new ArrayList<Shooter>(); //ArrayList of attackers
@@ -46,7 +47,7 @@ public class Application extends JFrame implements MouseListener
 		
 		gp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gp.setTitle("Tower Defense");			// Optional title
-		gp.setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set the width and height of the window
+		gp.setSize(WINDOW_WIDTH, WINDOW_HEIGHT + WINDOW_OFFSET); // Set the width and height of the window
 		gp.setVisible(true);					// Display the window
 		
 		//Adding defenders and attackers
@@ -141,6 +142,10 @@ public class Application extends JFrame implements MouseListener
 	{
 		//draw world
 		myWorld.draw(g);
+		
+		//Show user how much money they have left
+		drawMoney(g);
+		
 		//draw attackers
 		for(Shooter attacker : attackers)
 		{
@@ -153,11 +158,22 @@ public class Application extends JFrame implements MouseListener
 		}
 	}
 	
+	private void drawMoney(Graphics g)
+	{
+		final int HORIZONTAL_TEXT_OFFSET = 350;
+		final int VERTICAL_TEXT_OFFSET = 10;
+		final int TEXT_SIZE = 30;
+		
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Courier", Font.BOLD, TEXT_SIZE));
+		g.drawString("Money remaining:\n" + money, HORIZONTAL_TEXT_OFFSET, WINDOW_HEIGHT + WINDOW_OFFSET - VERTICAL_TEXT_OFFSET);
+	}
+	
 	private void build(int row, int col)
 	{
 		//building new Warriors
 		if(selectedObject == SelectedObject.WARRIOR && myWorld.isLand(row, col) && myWorld.isEmtpySpace(row, col)
-				&& Warrior.COST < money)
+				&& Warrior.COST <= money)
 		{ 
 			defenders.add(new Warrior(row, col)); //adding defenders where user dropped
 			money -= Warrior.COST; //subtracting the total cost of warrior
@@ -165,7 +181,7 @@ public class Application extends JFrame implements MouseListener
 		}
 		//building new Warships
 		else if(selectedObject == SelectedObject.WARSHIP && myWorld.isWater(row, col)
-				&& Warship.COST < money)
+				&& Warship.COST <= money)
 		{
 			defenders.add(new Warship(row, col));
 			money -= Warship.COST;

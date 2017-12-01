@@ -47,7 +47,7 @@ final int SIZE = 15; 	//the size of the square
 		//determine the exact location based on coordinates and dimensions of
 		//the world
 		int xCoord = col*world.WIDTH + world.WIDTH/2 - SIZE/2;
-		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2;
+		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2 + Application.WINDOW_OFFSET;
 		
 		//set color
 		final Color STRIKER = new Color(148,157,0);
