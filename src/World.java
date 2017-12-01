@@ -30,6 +30,7 @@ public class World
 	//various dimensions
 	public final int WIDTH = Application.WINDOW_WIDTH / world[0].length;
 	public final int HEIGHT = Application.WINDOW_HEIGHT / world.length;
+	public final int OFFSET = Application.WINDOW_OFFSET;
 	public final int ROWS = world.length;
 	public final int COLS = world[0].length;
 	
@@ -166,7 +167,7 @@ public class World
 					g.setColor(Color.CYAN);
 				else if(world[i][j] == GROUND)
 					g.setColor(DARK_BROWN);
-				g.fillRect(j*WIDTH, i*HEIGHT, WIDTH, HEIGHT);
+				g.fillRect(j*WIDTH, i*HEIGHT + Application.WINDOW_OFFSET, WIDTH, HEIGHT);
 			}
 		}
 		
@@ -175,8 +176,10 @@ public class World
 		for(int i = 0; i < world.length; i++)
 		{
 			for(int j = 0; j < world[0].length; j++)
-				g.drawLine(j * WIDTH, i * HEIGHT, j * WIDTH, (i + 1) * HEIGHT);
-			g.drawLine(0, i * HEIGHT, world[0].length * WIDTH, i * HEIGHT);
+				g.drawLine(j * WIDTH, i * HEIGHT + OFFSET, 
+						j * WIDTH, (i + 1) * HEIGHT + OFFSET);
+			g.drawLine(0, i * HEIGHT + OFFSET, 
+					world[0].length * WIDTH, i * HEIGHT + OFFSET);
 		}
 	}
 	
@@ -230,7 +233,7 @@ public class World
 		int [] coords = new int [2];
 		for(int row = ROWS - 1; row >= 0; row--)
 		{
-			if(y < ((row + 1) * HEIGHT))
+			if(y < ((row + 1) * HEIGHT + Application.WINDOW_OFFSET))
 				coords[0] = row;
 		}
 		

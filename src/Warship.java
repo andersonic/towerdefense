@@ -56,7 +56,7 @@ public class Warship extends Defender
 		
 		//center the warship in its grid square
 		int xCoord = col*world.WIDTH + world.WIDTH/2 - SIZE/2;
-		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2;
+		int yCoord = row*world.HEIGHT + world.HEIGHT/2 - SIZE/2 + Application.WINDOW_OFFSET;
 		
 		final Color WARSHIP = new Color(70,81,159);	//a blue-ish color
 		
