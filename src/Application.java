@@ -69,6 +69,26 @@ public class Application extends JFrame implements MouseListener
 		
 	}
 	
+	public void paint(Graphics g)
+	{
+		//draw world
+		myWorld.draw(g);
+		
+		//Show user how much money they have left
+		drawMoney(g);
+		
+		//draw attackers
+		for(Shooter attacker : attackers)
+		{
+			attacker.draw(g, myWorld);
+		}
+		//draw defenders
+		for(Shooter defender : defenders)
+		{
+			defender.draw(g, myWorld);
+		}
+	}
+	
 	public static void takeTurns(Application myApp)
 	{
 		int i = 0;
@@ -83,7 +103,6 @@ public class Application extends JFrame implements MouseListener
 			} 
 			catch (Exception e) 
 			{
-			
 			}
 			//have attackers take turn
 			attackersStuff(i);
@@ -113,6 +132,7 @@ public class Application extends JFrame implements MouseListener
 			}
 			else
 			{
+				//attacker is dead
 				atkItr.remove();
 				myWorld.setEmptySpaces(attacker.getRow(), attacker.getCol(), true);
 			}
@@ -133,28 +153,10 @@ public class Application extends JFrame implements MouseListener
 			}	
 			else
 			{
+				//defender is dead 
 				defItr.remove();
+				myWorld.setEmptySpaces(defender.getRow(), defender.getCol(), true);
 			}
-		}
-	}
-	
-	public void paint(Graphics g)
-	{
-		//draw world
-		myWorld.draw(g);
-		
-		//Show user how much money they have left
-		drawMoney(g);
-		
-		//draw attackers
-		for(Shooter attacker : attackers)
-		{
-			attacker.draw(g, myWorld);
-		}
-		//draw defenders
-		for(Shooter defender : defenders)
-		{
-			defender.draw(g, myWorld);
 		}
 	}
 	
